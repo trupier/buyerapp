@@ -1,10 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>{{slist.title}}</title>
 </head>
 <body>
-$END$
+
+    <h2> {{slist.title}} </h2>
+    <ul>
+        {% for item in items %}
+        <li> {{item.amount}} {{item}} </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'shoppinglist:addItem' shoplist_id %}">add item</a>
+
+    <h3>All shopping lists</h3>
+    <ul>
+    {% for shoplist in alllist %}
+        <li><a href="{% url 'shoppinglist:shoplist' shoplist.id %}">{{ shoplist.title }}</a></li>
+
+    {% endfor %}
+    </ul>
 </body>
 </html>
